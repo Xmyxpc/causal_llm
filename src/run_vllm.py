@@ -11,11 +11,6 @@ from pathlib import Path
 # ---- 1. 环境准备（必须在 import vllm 之前）----
 os.environ["VLLM_ENABLE_V1_MULTIPROCESSING"] = "0"
 
-# Kaggle 专用：加 kaggle-vllm runtime 到搜索路径（本地无此目录会自动跳过）
-for p in ("/kaggle/working/vllm-staged", "/kaggle/working/vllm-runtime-overlay"):
-    if os.path.isdir(p) and p not in sys.path:
-        sys.path.insert(0, p)
-
 # Kaggle 专用：bootstrap + 激活 env（本地直接跳过）
 def _kaggle_env():
     if not os.path.isdir("/kaggle/working"):
@@ -32,6 +27,16 @@ def _kaggle_env():
                 os.environ[k] = v.strip("'\"")
 
 _kaggle_env()
+
+# 关键修复：必须在 bootstrap 之后，再把 vllm 路径同步进 sys.path
+# 1) 把 kaggle-vllm env 写进 PYTHONPATH 的路径同步到 sys.path
+for _p in os.environ.get("PYTHONPATH", "").split(":"):
+    if _p and _p not in sys.path:
+        sys.path.insert(0, _p)
+# 2) 固定目录兜底
+for _p in ("/kaggle/working/vllm-staged", "/kaggle/working/vllm-runtime-overlay"):
+    if os.path.isdir(_p) and _p not in sys.path:
+        sys.path.insert(0, _p)
 
 # ---- 2. import（环境就绪后再导）----
 from vllm import SamplingParams
