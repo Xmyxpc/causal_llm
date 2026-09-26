@@ -116,12 +116,20 @@ def main():
         json_valid = False
         logger.error("模型输出不是合法 JSON")
 
+    # 把关键字段拆成表格列，方便直接看
+    treatment = parsed.get("treatment", "")
+    outcome = parsed.get("outcome", "")
+    adjustment_set = ";".join(parsed.get("adjustment_set", []) or [])
+
     save_result(
         result={
             "engine": "vllm",
             "model": config["model"]["name"],
             "seed": config["seed"],
             "json_valid": json_valid,
+            "treatment": treatment,
+            "outcome": outcome,
+            "adjustment_set": adjustment_set,
             "output": raw_output,
         },
         result_dir=config["results"]["result_dir"],

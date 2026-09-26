@@ -95,12 +95,20 @@ def main():
         logger.error(f"JSON 验证失败: {e}")
 
     # 6. 结果落盘
+    # 把关键字段拆成表格列，方便直接看
+    treatment = result.get("treatment", "")
+    outcome = result.get("outcome", "")
+    adjustment_set = ";".join(result.get("adjustment_set", []) or [])
+
     save_result(
         result={
             "engine": "transformers",
             "model": model_name,
             "seed": config["seed"],
             "json_valid": json_valid,
+            "treatment": treatment,
+            "outcome": outcome,
+            "adjustment_set": adjustment_set,
             "output": response,
         },
         result_dir=config["results"]["result_dir"],
