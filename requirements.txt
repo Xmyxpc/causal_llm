@@ -1,11 +1,16 @@
+# ========== 通用依赖（本地 4090 与 Kaggle 共用）==========
+
 # 基础
 torch
 transformers
 accelerate
 
-# 推理引擎（Kaggle 上需 GPU 环境）
-vllm
-
 # 配置与数据处理
 pyyaml
 numpy
+jsonschema
+
+# ========== vLLM 不放入本文件 ==========
+# - Kaggle 环境无法直接 pip install vllm，需用 kaggle-vllm 引导（见 setup_kaggle.sh）
+# - 本地 4090 请单独执行：  pip install vllm
+

@@ -1,0 +1,60 @@
+{
+  "type": "object",
+  "properties": {
+    "treatment": {
+      "type": "string"
+    },
+    "outcome": {
+      "type": "string"
+    },
+    "variables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "confounder",
+              "mediator",
+              "collider",
+              "instrumental_variable",
+              "irrelevant"
+            ]
+          },
+          "action": {
+            "type": "string",
+            "enum": [
+              "adjust",
+              "do_not_adjust"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "role",
+          "action",
+          "reason"
+        ]
+      }
+    },
+    "adjustment_set": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "treatment",
+    "outcome",
+    "variables",
+    "adjustment_set"
+  ]
+}
