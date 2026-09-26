@@ -1,0 +1,37 @@
+# ==============================
+# 统一实验配置
+# ==============================
+
+# 1. 随机种子
+seed: 42
+
+
+# 2. 模型配置
+model:
+  name: Qwen/Qwen2.5-7B-Instruct
+
+
+# 3. 文本生成配置
+generation:
+  temperature: 0.0
+  max_new_tokens: 512
+
+
+# 4. 实验基本信息
+experiment:
+  name: causal_llm_baseline
+
+
+# 5. 日志配置
+logging:
+  log_dir: logs
+
+
+# 6. 结果配置
+results:
+  result_dir: results
+
+
+# 7. 缓存配置
+cache:
+  cache_dir: cache

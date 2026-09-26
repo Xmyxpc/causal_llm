@@ -1,0 +1,11 @@
+# 基础
+torch
+transformers
+accelerate
+
+# 推理引擎（Kaggle 上需 GPU 环境）
+vllm
+
+# 配置与数据处理
+pyyaml
+numpy
