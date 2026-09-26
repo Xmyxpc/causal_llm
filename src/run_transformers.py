@@ -97,6 +97,7 @@ def main():
     # 6. 结果落盘
     save_result(
         result={
+            "engine": "transformers",
             "model": model_name,
             "seed": config["seed"],
             "json_valid": json_valid,

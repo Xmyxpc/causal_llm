@@ -118,6 +118,7 @@ def main():
 
     save_result(
         result={
+            "engine": "vllm",
             "model": config["model"]["name"],
             "seed": config["seed"],
             "json_valid": json_valid,
