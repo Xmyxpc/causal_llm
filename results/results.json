@@ -1,0 +1,10 @@
+{
+  "engine": "transformers",
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "seed": 42,
+  "json_valid": true,
+  "treatment": "T",
+  "outcome": "Y",
+  "adjustment_set": "X1;X2",
+  "output": "{\n  \"treatment\": \"T\",\n  \"outcome\": \"Y\",\n  \"variables\": [\n    {\n      \"name\": \"X1\",\n      \"role\": \"confounder\",\n      \"action\": \"adjust\",\n      \"reason\": \"X1 是 T 和 Y 的共同原因，因此它是混杂变量\"\n    },\n    {\n      \"name\": \"X2\",\n      \"role\": \"mediator\",\n      \"action\": \"adjust\",\n      \"reason\": \"X2 是 T 影响 Y 的中介变量\"\n    }\n  ],\n  \"adjustment_set\": [\n    \"X1\",\n    \"X2\"\n  ]\n}"
+}

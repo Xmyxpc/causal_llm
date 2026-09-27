@@ -1,0 +1,24 @@
+﻿engine,model,seed,json_valid,treatment,outcome,adjustment_set,output
+vllm,Qwen/Qwen2.5-7B-Instruct,42,True,T,Y,X;M,"{""treatment"": ""T"", ""outcome"": ""Y"", ""variables"": [{""name"": ""X"", ""role"": ""confounder"", ""action"": ""adjust"", ""reason"": ""X is a common cause of both T and Y.""}, {""name"": ""M"", ""role"": ""mediator"", ""action"": ""adjust"", ""reason"": ""M is a mediator through which T affects Y.""}, {""name"": ""C"", ""role"": ""collider"", ""action"": ""do_not_adjust"", ""reason"": ""C is a collider on the backdoor path from T to Y.""}],""adjustment_set"": [""X"", ""M""]}"
+transformers,Qwen/Qwen2.5-7B-Instruct,42,True,T,Y,X1;X2,"{
+  ""treatment"": ""T"",
+  ""outcome"": ""Y"",
+  ""variables"": [
+    {
+      ""name"": ""X1"",
+      ""role"": ""confounder"",
+      ""action"": ""adjust"",
+      ""reason"": ""X1 是 T 和 Y 的共同原因，因此它是混杂变量""
+    },
+    {
+      ""name"": ""X2"",
+      ""role"": ""mediator"",
+      ""action"": ""adjust"",
+      ""reason"": ""X2 是 T 影响 Y 的中介变量""
+    }
+  ],
+  ""adjustment_set"": [
+    ""X1"",
+    ""X2""
+  ]
+}"

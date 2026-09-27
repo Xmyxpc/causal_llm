@@ -1,0 +1,28 @@
+2026-09-27 03:01:28,366 | INFO | GPU 数量: 2
+2026-09-27 03:04:49,026 | INFO | 开始推理
+2026-09-27 03:05:01,687 | INFO | 模型输出: {"treatment": "T", "outcome": "Y", "variables": [{"name": "X", "role": "confounder", "action": "adjust", "reason": "X is a common cause of both T and Y."}, {"name": "M", "role": "mediator", "action": "adjust", "reason": "M is a mediator through which T affects Y."}, {"name": "C", "role": "collider", "action": "do_not_adjust", "reason": "C is a collider on the backdoor path from T to Y."}],"adjustment_set": ["X", "M"]}
+2026-09-27 03:06:21,423 | INFO | 加载模型: Qwen/Qwen2.5-7B-Instruct
+2026-09-27 03:06:45,933 | INFO | 模型 device_map: {'model.embed_tokens': 0, 'model.layers.0': 0, 'model.layers.1': 0, 'model.layers.2': 0, 'model.layers.3': 0, 'model.layers.4': 0, 'model.layers.5': 0, 'model.layers.6': 0, 'model.layers.7': 0, 'model.layers.8': 0, 'model.layers.9': 0, 'model.layers.10': 0, 'model.layers.11': 0, 'model.layers.12': 1, 'model.layers.13': 1, 'model.layers.14': 1, 'model.layers.15': 1, 'model.layers.16': 1, 'model.layers.17': 1, 'model.layers.18': 1, 'model.layers.19': 1, 'model.layers.20': 1, 'model.layers.21': 1, 'model.layers.22': 1, 'model.layers.23': 1, 'model.layers.24': 1, 'model.layers.25': 1, 'model.layers.26': 1, 'model.layers.27': 1, 'model.norm': 1, 'model.rotary_emb': 1, 'lm_head': 1}
+2026-09-27 03:06:56,937 | INFO | 模型输出: {
+  "treatment": "T",
+  "outcome": "Y",
+  "variables": [
+    {
+      "name": "X1",
+      "role": "confounder",
+      "action": "adjust",
+      "reason": "X1 是 T 和 Y 的共同原因，因此它是混杂变量"
+    },
+    {
+      "name": "X2",
+      "role": "mediator",
+      "action": "adjust",
+      "reason": "X2 是 T 影响 Y 的中介变量"
+    }
+  ],
+  "adjustment_set": [
+    "X1",
+    "X2"
+  ]
+}
+2026-09-27 03:06:58,276 | INFO | JSON Schema 验证通过
